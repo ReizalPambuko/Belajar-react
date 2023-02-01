@@ -1,0 +1,16 @@
+.post{
+    display: flex;
+    align-items: center;
+}
+.content{
+    margin-left: 20px;
+}
+
+.sectionPost{
+    font-size: 2rem;
+    font-weight: bold;
+}
+.title-dummy{
+    font-size: 1.5rem;
+    font-weight: 600;
+}

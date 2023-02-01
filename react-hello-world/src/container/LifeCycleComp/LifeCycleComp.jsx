@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import "./LifeCycleComp.css";
 
 
 class LifeCycleComp extends Component {
@@ -9,47 +9,59 @@ class LifeCycleComp extends Component {
         this.state = {
             count: 1
         }
-        console.log('constructor');  
+        console.log('constructor')  
     }
 
     static getDerivedStateFromProps(props,state){
-        console.log('getDerivedStateFromProps');
-        return null;
-
+        console.log('getDerivedStateFromProps')
+        return null; 
     }
 
     componentDidMount (){
-        console.log('componentDidMount');
+        console.log('componentDidMount')
+        // setTimeout(
+        //     () => this.setState({ count: 2 }), 
+        //     5000
+        // );
     }
 
 
     shouldComponentUpdate(nextProps, nextState){
         console.log('shouldComponentUpdate')
+        console.log("nextState", nextProps);
+        console.log("this.state", this.state)
+        if(nextState.count >= 4){
+            return  false
+        }
         return true;
-
     }
 
 
     getSnapshotBeforeUpdate(prevProps,prevState){
         console.log('getSnapshotBeforeUpdate');
+        return null;
     }
 
     componentDidUpdate(prevProps,prevState,snapshot){
-        console.log('componentDidUpdate')
+        console.log('componentDidUpdate');
 
     }
+    
+    componentWillUnmount(){
+        console.log('compoenentWillMount')
+    }
 
-    componentWillMount(){
-        console.log('componentWillUnmount')
-
+    changeCount = () => {
+        this.setState({
+            count: this.state.count + 1
+        })
     }
 
     render(){
         console.log('render')
         return(
             <div>
-                <button>Component Button {this.state.count}</button>
-                <h3>Test</h3> 
+                <button onClick={this.changeCount} className="btn-primary">Component Button {this.state.count}</button>
             </div>
         )
     }
